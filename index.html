@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUKHIL AMSATH- Personal Website</title>
+    <title>MUKHIL AMSATH - Personal Website</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,29 +13,35 @@
             color: #333;
             overflow-x: hidden;
         }
+
         .circle-image {
-             width: 170px; 
-             height: 170px; 
-             border-radius: 70%; 
-             object-fit: fill; 
-             position: absolute;
+    width: 170px; 
+    height: 170px; 
+    border-radius: 50%; 
+    object-fit: fill; 
+    position: absolute;
     top: 20px; 
     left: 20px;
+    opacity: 0.5; /* Add transparency */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border: 3px solid white; 
-        }
+    z-index: -1; /* Ensure it's behind the title */
+}
 
-        header {
-            background: linear-gradient(to right, #ff6f61, #ff7eb3);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
+header {
+    position: relative; /* Enable stacking context for z-index */
+    background: linear-gradient(to right, #ff6f61, #ff7eb3);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    z-index: 1; /* Place above the image */
+}
         header h1 {
             margin: 0;
             font-size: 3em;
             letter-spacing: 2px;
         }
+
         nav {
             display: flex;
             justify-content: center;
@@ -43,9 +49,10 @@
             padding: 15px 0;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: sticky;
-            top: 20;
+            top: 0;
             z-index: 1000;
         }
+
         nav a {
             color: #ff6f61;
             text-decoration: none;
@@ -56,6 +63,7 @@
         nav a:hover {
             color: #ff3d00;
         }
+
         .main-content {
             max-width: 900px;
             margin: 30px auto;
@@ -65,13 +73,16 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             animation: fadeIn 1s ease-out;
         }
+
         section {
             display: none;
             margin-bottom: 30px;
         }
+
         section.active {
             display: block;
         }
+
         h2 {
             color: #ff6f61;
             border-bottom: 2px solid #ff6f61;
@@ -79,6 +90,7 @@
             padding-bottom: 5px;
             margin-bottom: 15px;
         }
+
         footer {
             text-align: center;
             padding: 20px 0;
@@ -88,6 +100,7 @@
             bottom: 0;
             width: 100%;
         }
+
         footer p {
             margin: 0;
         }
@@ -106,10 +119,12 @@
         .feedback {
             margin-top: 40px;
         }
+
         .feedback form {
             display: flex;
             flex-direction: column;
         }
+
         .feedback input, .feedback textarea {
             margin-bottom: 15px;
             padding: 10px;
@@ -117,6 +132,7 @@
             border-radius: 5px;
             font-size: 1em;
         }
+
         .feedback button {
             padding: 10px;
             border: none;
@@ -127,42 +143,86 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+
         .feedback button:hover {
             background: #ff3d00;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .circle-image {
+                width: 120px;
+                height: 120px;
+                top: 10px;
+                left: 10px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+
+            .main-content {
+                margin: 20px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .circle-image {
+                width: 100px;
+                height: 100px;
+                top: 5px;
+                left: 5px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            nav a {
+                font-size: 0.9em;
+                margin: 0 5px;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1 style="font-family: cursive">    Hi!! I am Mukhil.....</h1>
+        <p>Welcome to my website</p>
+    </header>
 
-<header>
-    <h1 style="font-family:cursive"><center>Hi!! I am mukhil...</center></h1>
-    <p>Welcome to my website</p>
-</header>
+    <img src="img.jpg" alt="Circular Image" class="circle-image">
 
-<img src="img.jpg" alt="Circular Image" class="circle-image">
+    <nav>
+        <a href="#" data-section="about">About Me</a>
+        <a href="#" data-section="projects">Projects</a>
+        <a href="#" data-section="contact">Contact</a>
+        <a href="#" data-section="experience">Experience</a>
+        <a href="#" data-section="feedback">Feedback</a>
+    </nav>
 
-
-<nav>
-    <a href="#" data-section="about">About Me</a>
-    <a href="#" data-section="projects">Projects</a>
-    <a href="#" data-section="contact">Contact</a>
-    <a href="#" data-section="experience">Experience</a>
-    <a href="#" data-section="feedback">Feedback</a>
-</nav>
-
-<div class="main-content">
-    <section id="about" class="active">
-        <h2>About Me</h2>
-        <p style="font-family: cursive">Hello! I'm mukhil amsath, and I'm passionate about Full Stack development, data science, etc. Welcome to my personal space where I showcase my projects and share my thoughts.</p>
-    </section>
-
-    <section id="projects">
+    <div class="main-content">
+        <section id="about" class="active">
+            <h2>About Me</h2>
+            <p style="font-family: cursive">Hello! I'm Mukhil Amsath, and I'm passionate about Full Stack development and data science. Welcome to my personal space where I showcase my projects and share my thoughts.</p>
+        </section>
+        <section id="projects">
         <h2>Projects</h2>
         <ul>
             <li><strong>Let's Link:</strong> [It is a web app which connects the job recuriters from small scale to large scale works to the doers]</li>
             
         </ul>
-    </section>
+        </section>
 
     <section id="contact">
         <h2>Contact</h2>
@@ -187,28 +247,28 @@
             <button type="submit" onclick="showAlert()" >Submit Feedback</button>
         </form>
     </section>
-   
-</div>
 
-<footer>
-    <p>&copy; 2025 mukhilamsath.</p>
-</footer>
+    </div>
 
-<script>
-     function showAlert() {
-            alert("your feedback is submitted");
+    <footer>
+        <p>&copy; 2025 Mukhil Amsath.</p>
+    </footer>
+
+    <script>
+        function showAlert() {
+            alert("Your feedback has been submitted!");
         }
-    document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', event => {
-            event.preventDefault();
-            const sectionId = event.target.getAttribute('data-section');
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-        });
-    });
-</script>
 
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const sectionId = event.target.getAttribute('data-section');
+                document.querySelectorAll('section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
